@@ -29,15 +29,21 @@ public class EmpleadoController implements ActionListener{
         //this.ModeloPersona = ModeloPersona;
         
         this.VistaPrincipal.setVisible(true);
+        
+        this.ModeloPersona.ListarDatos();
+        
+        this.VistaPrincipal.btnEmpleados.addActionListener(this);
+        this.VistaPersonas.btnAgregar.addActionListener(this);
+        this.VistaPersonas.btnEditar.addActionListener(this);
+        this.VistaPersonas.btnEliminar.addActionListener(this);
     }
     
     
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        if(e.getSource()==this.VistaPrincipal.btnEmpleados){
+            this.VistaPersonas.setVisible(true);
+        }
     }
-    
-    
-    
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proegramafinal0905;
+package programafinal0905;
 
 import Controllador.EmpleadoController;
 import Modelos.Conexion;

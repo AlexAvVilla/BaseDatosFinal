@@ -7,6 +7,7 @@ package Modelos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -17,18 +18,21 @@ import javax.swing.JOptionPane;
 public class Conexion {
     Connection conexion;
     
-    public Connection Conectar(String user, String pass){
+    
+    public Connection Conectar(){
         try 
         {
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             
-            String servidor = "localhost";
+            String servidor = "255.255.248.0"; //localhost
             String numero_puerto = "1521";
-            String sid = "xe";
+            String sid = "umg"; //xe
             String url = "jdbc:oracle:thin:@"+servidor+":"+numero_puerto+":"+sid;
             
+            String usuario ="HA32";
+            String password ="Umg$2023";
             
-            conexion = DriverManager.getConnection(url, user, pass);
+            conexion = DriverManager.getConnection(url, usuario, password);
             JOptionPane.showMessageDialog(null, "Conexion Exitosa");
             return conexion;
             

@@ -6,6 +6,7 @@
 package Modelos;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -20,6 +21,8 @@ public class EmpleadosModel {
     String nombre;
     String telefono;
     Connection myConexion;
+    Conexion nuevaConexion;
+    ResultSet rst;
     
     public EmpleadosModel(int codigo, String apellidos, String nombre, String telefono) {
         this.codigo = codigo;
@@ -60,13 +63,26 @@ public class EmpleadosModel {
         this.telefono = telefono;
     }
     
+    public ResultSet ListarDatos(){
+       try
+       {
+           myConexion = nuevaConexion.Conectar();
+           Statement sentencia = myConexion.createStatement();
+           rst = sentencia.executeQuery("Select * from Empleados");
+           return rst;
+       }
+       catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "No se pudo Listar");
+           return rst;
+       }
+    }
     // metodo agregar
     
-    //metodo editar
-    
+    //metodo editar execute porno.exe
+        
     //metodo eliminar
     
-    public void GuardarPersona(String apellido, String nombre, int telefono){
+    /*public void GuardarPersona(String apellido, String nombre, int telefono){
         try{
             Conexion nuevaConexion = new Conexion();
             this.myConexion = nuevaConexion.Conectar(nombre, nombre);
@@ -75,6 +91,6 @@ public class EmpleadosModel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar el registro tio "+e.getMessage());
         } 
-    }
+    }*/
     
 }
